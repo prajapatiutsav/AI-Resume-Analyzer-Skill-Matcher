@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Resume Analyzer</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Resume Analyzer & Skill Matcher</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+<label>Upload Resume (PDF)</label>
+<input type="file" name="resume" accept=".pdf" required>
+
+<label>Paste Job Description</label>
+<textarea name="job" placeholder="Paste job description here..." required></textarea>
+
+<button type="submit">Analyze Resume</button>
+
+</form>
+
+
+{% if match %}
+
+<div class="results">
+
+<div class="score">
+Match Score: {{match}} %
+</div>
+
+<div class="skills">
+
+<h3>Detected Skills</h3>
+
+<ul>
+
+{% for s in skills %}
+<li>{{s}}</li>
+{% endfor %}
+
+</ul>
+
+</div>
+
+{% if chart %}
+
+<div class="chart">
+
+<h3>Skill Visualization</h3>
+
+<img src="{{chart}}">
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
